@@ -1,0 +1,105 @@
+<midi app=" 2.3.1.15">
+<!--
+Title: S9 cue two actions at once Midi Mapping example
+URL: https://github.com/haveboard/s9-cue-two-actions-at-once-midi-mapping-example
+Description: example code to trigger 2 actions with 1 cue in Serato DJ
+
+created by dj haveboard https://djhaveboard.com
+
+Hey DJs!! This license basically says you can use this any way you
+want and even sell it but leave the license and credits at the top of this file
+
+Version 1.0.1
+
+MIT License
+
+Copyright (c) 2020 Jonathan Finnegan & DJ As-One
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+This is for the love of DJing, turntablism, and the community that supports it.
+
+If you use any of this code, please keep all code comments with credits and licensing intake. Thanks!
+
+-->
+    <!--LeftCue8-->
+    <control channel="8" event_type="Note On" control="7">
+        <!--click event -->
+        <userio event="click">
+            <!--sync click action -->
+            <sync deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any" behaviour="explicit"/>
+            </sync>
+            <!--END sync click action -->
+            <!--sample_player_slot_play click action -->
+            <sample_player_slot_play deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any" behaviour="explicit"/>
+            </sample_player_slot_play>
+            <!--END sample_player_slot_play click action -->
+        </userio>
+        <!--END click event -->
+        <!--output event -->
+        <userio event="output">
+            <!--sync output action - turn on sync on sample player slot 1-->
+            <sync deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any">
+                    <alias name="on" value="127"/><!--here is where you can play with colors val 1 - 64-->
+                    <alias name="off" value="0"/><!--here is where you can play with colors val 1 - 64-->
+                </translation>
+            </sync>
+            <!--END sync output action - turn on sync on sample player slot 1-->
+            <!--sample_player_slot_play output action - trigger sample player slot 1-->
+            <sample_player_slot_play deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any">
+                    <alias name="on" value="127"/><!--here is where you can play with colors val 1 - 64-->
+                    <alias name="off" value="0"/><!--here is where you can play with colors val 1 - 64-->
+                </translation>
+            </sample_player_slot_play>
+            <!--END sample_player_slot_play output action - trigger sample player slot 1-->
+        </userio>
+        <!--END output event -->
+    </control>
+    <!--END LeftCue8-->
+
+    <!--Shift LeftCue8-->
+    <control channel="8" event_type="Note On" control="15">
+        <!--click event -->
+        <userio event="click">
+            <!--sync_off click action-->
+            <sync_off deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any" behaviour="explicit"/>
+            </sync_off>
+            <!--END sync_off click action-->
+        </userio>
+        <!--END click event -->
+        <!--output event -->
+        <userio event="output">
+            <!--sync_off output action - turn off sync on sample player slot 1-->
+            <sync_off deck_set="Sample Player" deck_id="0" slot_id="0">
+                <translation action_on="any">
+                    <alias name="on" value="127"/><!--here is where you can play with colors val 1 - 64-->
+                    <alias name="off" value="0"/><!--here is where you can play with colors val 1 - 64-->
+                </translation>
+            </sync_off>
+            <!--END sync_off output action - turn off sync on sample player slot 1-->
+        </userio>
+        <!--END output event -->
+    </control>
+    <!--END Shift LeftCue8-->
+</midi>
